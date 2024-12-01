@@ -5,8 +5,8 @@ export { a };
 export default {
   "search": async function() {
     const currentPage = Number(window.location.hash.substring(1).split("/")[1]);
-    const offset = 10 * (currentPage - 1);
-    const url = `https://wt.kpi.fei.tuke.sk/api/article?max=10&offset=${offset}`;
+    const offset = 20 * (currentPage - 1);
+    const url = `https://wt.kpi.fei.tuke.sk/api/article?max=20&offset=${offset}`;
 
     const data = await (await fetch(url)).json();
     if (currentPage > 1) {

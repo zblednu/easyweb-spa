@@ -1,0 +1,52 @@
+:root {
+  --black: #222831;
+  --white: #EEEEEE;
+  --blue: #00ADB5;
+  --gray: #393E46;
+}
+
+html {
+  font-size: 16px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  border: none;
+  outline: none;
+  color: var(--gray);
+  box-sizing: border-box;
+}
+
+a:hover {
+  text-decoration: none;  
+}
+
+body {
+  background-color: var(--white);
+  margin: auto;
+  margin-top: 2rem;
+  width: 100vw;
+  max-width: 40rem;
+  padding: 1rem;
+  outline: black 1px solid;
+
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+}
+
+nav {
+  align-self: stretch;
+  flex: 0;
+  background-color: var(--blue);
+  font-size: 2rem;
+
+  display: flex;
+  justify-content: space-around;
+}
+
+main {
+  align-self: flex-start;
+}

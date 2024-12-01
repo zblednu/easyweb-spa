@@ -1,0 +1,13 @@
+<ul>
+  {{#articles}}
+  <li><a href="#article/{{id}}">{{title}}</a> {{author}}</li>
+  {{/articles}}
+
+  {{#prevPage}}
+  <a href="#search/{{prevPage}}">Prev</a>
+  {{/prevPage}}
+
+  {{#nextPage}}
+  <a href="#search/{{nextPage}}">Next</a>
+  {{/nextPage}}
+</ul>

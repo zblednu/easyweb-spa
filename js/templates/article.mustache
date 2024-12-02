@@ -1,5 +1,8 @@
 <article>
+  <nav class="flex gap-1">
+    <a class="text-green-500 mr-auto before:content-['<'] hover:underline"href="#{{backHref}}">Back</a>
+    <a class="bg-green-500" href="#edit/{{articleId}}">Edit</a>
+    <button class="bg-rose-600 py-1 px-3 rounded hover:bg-rose-700 active:bg-rose-900">Delete</button>
+  </nav>
   {{content}}
-  <a href={{backHref}}>Back</a>
-  <button>DELETE</button>
 </article>

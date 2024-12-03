@@ -1,3 +1,7 @@
 export function getSplittedHash(url = window.location.href) {
-  return url.split("#")[1].split("/");
+  try {
+    return url.split("#")[1].split("/");
+  } catch (err) {
+    return "";
+  }
 }

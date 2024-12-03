@@ -14,4 +14,5 @@ function handleHashChange(event) {
     .catch(errorRoute);
 }
 
-window.location.hash = "#search/1";
+
+window.addEventListener("load", () => window.location.hash = "#search/1");

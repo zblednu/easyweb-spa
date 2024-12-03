@@ -4,5 +4,14 @@
     <a class="bg-green-500" href="#edit/{{articleId}}">Edit</a>
     <button class="bg-rose-600 py-1 px-3 rounded hover:bg-rose-700 active:bg-rose-900">Delete</button>
   </nav>
-  {{content}}
+  <h2 class="font-bold">{{title}}</h2>
+  <p>Published {{published}} by <span class="text-green-400">{{author}}</span></p>
+  <p>{{content}}</p>
+
+  <form class="flex flex-col bg-green-500 p-4 rounded gap-1">
+    <input placeholder="name">
+    <textarea placeholder="Add a comment...">placeholder</textarea>
+    <button id="add-comment" class="bg-green-600 rounded self-start">Add comment</button>
+  </form>
+  <div id="comments-root"></div>
 </article>

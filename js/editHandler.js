@@ -21,8 +21,9 @@ export default async function uploadArticle() {
       })
     };
 
-    fetch(serverURL + "/article" + (articleId !== "new" && `/${articleId}`), payload)
-      .then(response => console.log(response.status));
+    const response = await (await fetch(serverURL + "/article" + (articleId !== "new" && `/${articleId}`), payload)).json();
+
+    window.location.hash = `#article/${response.id}`;
   }
 
 };

@@ -1,4 +1,5 @@
 import { loadAndRender, getSplittedHash } from "./utils.js";
+import { loadComments, addNewComment } from "./commentsHandler.js";
 
 export default function(event) {
 
@@ -10,24 +11,28 @@ export default function(event) {
 
 const routes = {
   "search": async function() {
-    const currentPage = getSplittedHash()[1];
-    const offset = 10 * (currentPage - 1);
-    const url = `${serverURL}/articles?max=10&offset=${offset}`;
+    const currentPage = Number(getSplittedHash()[1]);
+    const offset = 20 * (currentPage - 1);
+    const url = `${serverURL}/articles?max=20&offset=${offset}`;
 
-    const data = {};
-    data.articles = (await (await fetch(url)).json()).articles;
-    for (const item of data.articles) {
-      item.content = (await(await fetch(`${serverURL}/article/${item.id}`)).json()).content;
-    }
+    const data = {
+      articles: (await (await fetch(url)).json()).articles
+    };
+
+    const promises = data.articles.map(elem => {
+      return fetch(`${serverURL}/article/${elem.id}`)
+        .then(response => response.json())
+        .then(article => elem.content = article.content);
+    });
+    await Promise.all(promises);
+
     if (currentPage > 1) {
       data.prevPage = currentPage - 1;
     }
-
     if (currentPage < 10) {
       data.nextPage = currentPage + 1;
     }
 
-    console.log(data);
     loadAndRender("./js/templates/search.mustache", data);
   },
 
@@ -38,6 +43,8 @@ const routes = {
     data.backHref = oldHash.join("/");
     data.articleId = articleId;
 
+    const published = new Date(data.dateCreated);
+    data.published = published.toDateString().split(" ").slice(1).join(" ");
     await loadAndRender("./js/templates/article.mustache", data);
 
     const button = document.querySelector("button");
@@ -45,6 +52,10 @@ const routes = {
       await fetch(url, { method: "DELETE" });
       window.location.hash = data.backHref;
     });
+
+    const addCommentBtn = document.querySelector("#add-comment");
+    addCommentBtn.addEventListener("click", addNewComment);
+    loadComments();
   },
 
 

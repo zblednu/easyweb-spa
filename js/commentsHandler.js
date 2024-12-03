@@ -1,13 +1,18 @@
-import { loadAndRender, getSplittedHash } from "./utils.js";
+import { getSplittedHash } from "./utils.js";
+
+const template = await (await fetch("./js/templates/comments.mustache")).text();
+
 export async function loadComments() {
   const articleId = getSplittedHash()[1];
 
   const url = `${serverURL}/article/${articleId}/comment`;
-  const data = await (await fetch(url)).json(); 
-  console.log(data);
+  const data = {
+    comments: (await fetch(url).then(res => res.json())).comments
+  }
+  data.commentsAmount = data.comments.length;
 
-  const props = data.comments;
-  loadAndRender("./js/templates/comments.mustache", props, "#comments-root");
+  const render = Mustache.render(template, data);
+  document.querySelector("#comments-root").innerHTML = render;
 }
 
 export async function addNewComment() {

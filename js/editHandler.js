@@ -7,7 +7,6 @@ export default async function uploadArticle() {
 
   if (author && title && content) {
     const articleId = getSplittedHash()[1];
-    console.log(articleId);
     const payload = {
       method: articleId === "new" ? "POST" : "PUT",
       headers: {
@@ -17,12 +16,12 @@ export default async function uploadArticle() {
         title,
         author,
         content,
-        tags: ["easyweb"]
       })
     };
 
-    const response = await (await fetch(serverURL + "/article" + (articleId !== "new" && `/${articleId}`), payload)).json();
+    const response = await (fetch(serverURL + "/article" + (articleId !== "new" && `/${articleId}`), payload).then(res => res.json()));
 
+    console.log(response.tags);
     window.location.hash = `#article/${response.id}`;
   }
 

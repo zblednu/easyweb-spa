@@ -1,3 +1,4 @@
+<a href="#{{backHref}}" class="font-medium hover:underline">&lt; Back</a>
 <form class="flex flex-col gap-4 text-slate-900">
   <input id="author" class="text-slate-900" placeholder="Author" type="text" required 
   {{#exists}}
@@ -9,8 +10,7 @@
     disabled value="{{title}}"
   {{/exists}}>
 
-  <textarea required class="" rows=10>
-  </textarea>
+  <textarea required class="whitespace-pre" rows=10>{{#exists}}{{content}}{{/exists}}</textarea>
 
-  <button class="bg-green-500" onclick="window.uploadArticle()">Submit</button>
+  <button class="bg-green-500"">Submit</button>
 </form>

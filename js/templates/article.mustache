@@ -1,17 +1,20 @@
-<article>
-  <nav class="flex gap-1">
-    <a class="text-green-500 mr-auto before:content-['<'] hover:underline"href="#{{backHref}}">Back</a>
-    <a class="bg-green-500" href="#edit/{{articleId}}">Edit</a>
-    <button class="bg-rose-600 py-1 px-3 rounded hover:bg-rose-700 active:bg-rose-900">Delete</button>
-  </nav>
-  <h2 class="font-bold">{{title}}</h2>
-  <p>Published {{published}} by <span class="text-green-400">{{author}}</span></p>
-  <p>{{content}}</p>
+<nav class="flex gap-1 items-center my-8">
+  <a class="mr-auto font-medium hover:underline" href="#{{backHref}}">&lt; Back</a>
+  <a class="bg-green-500 font-medium rounded-lg hover:bg-green-600 px-3 py-1" href="#edit/{{articleId}}">Edit</a>
+  <button class="bg-rose-500 font-medium py-1 px-3 rounded-lg hover:bg-rose-600">Delete</button>
+</nav>
 
-  <form class="flex flex-col bg-green-500 p-4 rounded gap-1">
-    <input placeholder="name">
-    <textarea placeholder="Add a comment...">placeholder</textarea>
-    <button id="add-comment" class="bg-green-600 rounded self-start">Add comment</button>
-  </form>
-  <div id="comments-root"></div>
+<article class="flex flex-col gap-4 my-8">
+  <h1 class="font-extrabold text-4xl">{{title}}</h1>
+  <p class="text-neutral-600">Published {{published}} by {{author}}</p>
+  <p>{{content}}</p>
 </article>
+
+<form class="flex flex-col gap-1 my-8 w-fit border rounded-lg border-solid border-neutral-700">
+  <input placeholder="Your name" class="outline-none bg-inherit border-b border-neutral-700 border-solid">
+  <textarea placeholder="Add a comment..." class="bg-inherit outline-none resize-none"></textarea>
+</form>
+
+<button id="add-comment" class="font-medium bg-green-500 hover:bg-green-600 rounded-lg w-fit py-1 px-3">Publish</button>
+
+<div id="comments-root" class=""></div>

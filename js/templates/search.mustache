@@ -1,27 +1,25 @@
-<ul class="flex flex-col gap-4 p-1"> 
+<nav class="flex flex-col gap-2"> 
   {{#articles}}
-    <a href="#article/{{id}}" class="rounded-xl flex flex-col p-8 shadow-xl hover:bg-neutral-200">
-      <div class="truncate border-l-4 border-green-600 text-green-600">
+    <a href="#article/{{id}}" class="rounded-lg flex flex-col p-4 hover:shadow-lg hover:bg-neutral-100">
+      <h2 class="truncate text-xl border-l-4 border-green-600 pl-2 font-bold text-green-600">
         {{title}}
-      </div>
-      <div>{{author}}</div>
-      <div>{{published}}</div>
-      <div class="line-clamp-3">{{content}}</div>
+      </h2>
+      <p class="pl-5 line-clamp-3 text-neutral-700">{{content}}</p>
     </a>
   {{/articles}}
-</ul>
+</nav>
 
-<nav class="flex mb-4">
+<nav class="flex px-16 mt-4">
   {{#prevPage}}
     <a href="#search/{{prevPage}}"
-    class="shadow-2xl bg-green-600 px-3 py-1 rounded">
+    class="bg-green-500 hover:bg-green-600 px-3 py-1 rounded-lg">
       &lt; Prev
     </a>
   {{/prevPage}}
 
   {{#nextPage}}
     <a href="#search/{{nextPage}}"
-    class="ml-auto shadow-md bg-green-600 px-3 py-1 rounded">
+    class="ml-auto bg-green-500 hover:bg-green-600 px-3 py-1 rounded-lg">
       Next &gt; 
     </a>
   {{/nextPage}}

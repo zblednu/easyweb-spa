@@ -7,7 +7,7 @@ export default [
     route: "search",
     template: await (await fetch("./js/templates/search.mustache")).text(),
     handler: async function() {
-      lastSearchPage = Number(getSplittedHash()[1]);
+      window.lastSearchPage = Number(getSplittedHash()[1]);
       const offset = 10 * (lastSearchPage - 1);
       const url = `${serverURL}/articles?max=10&offset=${offset}`;
 
@@ -36,11 +36,11 @@ export default [
   {
     route: "article",
     template: await (await fetch("./js/templates/article.mustache")).text(),
-    handler: async function(oldHash) {
+    handler: async function() {
       const articleId = getSplittedHash()[1];
       const url = `${serverURL}/article/${articleId}`;
       const data = await (await fetch(url)).json();
-      data.backHref = oldHash.join("/");
+      data.backHref = `search/${window.lastSearchPage}`;
       data.articleId = articleId;
 
       const published = new Date(data.dateCreated);
@@ -56,13 +56,20 @@ export default [
 
       const addCommentBtn = document.querySelector("#add-comment");
       addCommentBtn.addEventListener("click", addNewComment);
-      loadComments();
+
+      const loadCommentsBtn = document.querySelector("#load-comments");
+      loadCommentsBtn.addEventListener("click", loadComments);
+
+      if (window.username) {
+        const usernameInput = document.querySelector("#username");
+        usernameInput.value = window.username;
+      }
     }
   },
   {
     route: "edit",
     template: await (await fetch("./js/templates/edit.mustache")).text(),
-    handler: async function(oldHash) {
+    handler: async function() {
       const data = {};
       const articleId = getSplittedHash()[1];
       if (articleId !== "new") {
@@ -72,12 +79,17 @@ export default [
         data.title = article.title;
         data.content = article.content;
       }
-      data.backHref = oldHash.join("/");
+      data.backHref = window.oldHash.join("/");
 
       const rendered = Mustache.render(this.template, data);
       document.querySelector("main").innerHTML = rendered;
 
       document.querySelector("button").addEventListener("click", uploadArticle);
+
+      if (!data.exists && window.username) {
+        const usernameInput = document.querySelector("#author");
+        usernameInput.value = window.username;
+      }
     }
   },
   {

@@ -21,7 +21,6 @@ export default async function uploadArticle() {
 
     const response = await (fetch(serverURL + "/article" + (articleId !== "new" && `/${articleId}`), payload).then(res => res.json()));
 
-    console.log(response.tags);
     window.location.hash = `#article/${response.id}`;
   }
 

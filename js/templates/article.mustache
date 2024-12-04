@@ -11,10 +11,11 @@
 </article>
 
 <form class="flex flex-col gap-1 my-8 w-fit border rounded-lg border-solid border-neutral-700">
-  <input placeholder="Your name" class="outline-none bg-inherit border-b border-neutral-700 border-solid">
+  <input id="username" placeholder="Your name" class="outline-none bg-inherit border-b border-neutral-700 border-solid">
   <textarea placeholder="Add a comment..." class="bg-inherit outline-none resize-none"></textarea>
 </form>
 
 <button id="add-comment" class="font-medium bg-green-500 hover:bg-green-600 rounded-lg w-fit py-1 px-3">Publish</button>
 
 <div id="comments-root" class=""></div>
+<button class="font-medium bg-yellow-600 hover:bg-green-600 rounded-lg w-fit py-1 px-3" id="load-comments">Load Comments</button>

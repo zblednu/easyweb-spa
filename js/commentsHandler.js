@@ -5,14 +5,14 @@ const template = await (await fetch("./js/templates/comments.mustache")).text();
 export async function loadComments() {
   const articleId = getSplittedHash()[1];
 
-  const url = `${serverURL}/article/${articleId}/comment`;
+  const url = `${serverURL}/article/${articleId}/comment?offset=${window.commentsLoaded}&max=5`;
   const data = {
     comments: (await fetch(url).then(res => res.json())).comments
-  }
-  data.commentsAmount = data.comments.length;
+  };
 
   const render = Mustache.render(template, data);
-  document.querySelector("#comments-root").innerHTML = render;
+  document.querySelector("#comments-root").innerHTML += render;
+  window.commentsLoaded += data.comments.length;
 }
 
 export async function addNewComment() {

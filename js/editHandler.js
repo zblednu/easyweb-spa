@@ -19,7 +19,9 @@ export default async function uploadArticle() {
       })
     };
 
-    const response = await (fetch(serverURL + "/article" + (articleId !== "new" && `/${articleId}`), payload).then(res => res.json()));
+    const url = serverURL + "/article" + (articleId !== "new" && `/${articleId}`);
+    const response = await (fetch(url, payload)
+      .then(res => res.json()));
 
     window.location.hash = `#article/${response.id}`;
   }

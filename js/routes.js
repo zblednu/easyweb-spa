@@ -4,6 +4,15 @@ import uploadArticle from "./editHandler.js";
 
 export default [
   {
+    route: "about",
+    template: await (fetch("./js/templates/about.mustache")
+                    .then(res => res.text())),
+    handler: function() {
+      const rendered = Mustache.render(this.template, {});
+      document.querySelector("main").innerHTML = rendered;
+    }
+  },
+  {
     route: "search",
     template: await (await fetch("./js/templates/search.mustache")).text(),
     handler: async function() {

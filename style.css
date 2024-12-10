@@ -597,8 +597,8 @@ video {
   width: fit-content;
 }
 
-.max-w-screen-lg {
-  max-width: 1024px;
+.max-w-\[70ch\] {
+  max-width: 70ch;
 }
 
 .resize-none {
@@ -706,11 +706,6 @@ video {
   padding: 1rem;
 }
 
-.px-12 {
-  padding-left: 3rem;
-  padding-right: 3rem;
-}
-
 .px-16 {
   padding-left: 4rem;
   padding-right: 4rem;
@@ -719,11 +714,6 @@ video {
 .px-3 {
   padding-left: 0.75rem;
   padding-right: 0.75rem;
-}
-
-.px-4 {
-  padding-left: 1rem;
-  padding-right: 1rem;
 }
 
 .py-1 {

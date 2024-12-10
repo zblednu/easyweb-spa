@@ -1,0 +1,31 @@
+<nav class="flex flex-col gap-2"> 
+  {{#articles}}
+    <a href="#article/{{id}}" 
+    class="rounded-lg flex flex-col p-4 hover:shadow-lg hover:bg-neutral-100">
+      <h2 
+      class="truncate text-xl border-l-4 border-green-600 pl-2 font-bold text-green-600">
+        {{title}}
+      </h2>
+      <p 
+      class="pl-5 line-clamp-3 text-neutral-700">
+        {{preview}}
+      </p>
+    </a>
+  {{/articles}}
+</nav>
+
+<nav class="flex px-16 mt-4">
+  {{#prevSearchPage}}
+    <a href="#search/{{prevSearchPage}}"
+    class="bg-green-500 hover:bg-green-600 px-3 py-1 rounded-lg">
+      &lt; Prev
+    </a>
+  {{/prevSearchPage}}
+
+  {{#nextSearchPage}}
+    <a href="#search/{{nextSearchPage}}"
+    class="ml-auto bg-green-500 hover:bg-green-600 px-3 py-1 rounded-lg">
+      Next &gt; 
+    </a>
+  {{/nextSearchPage}}
+</nav>

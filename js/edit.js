@@ -25,5 +25,4 @@ export default async function uploadArticle() {
 
     window.location.hash = `#article/${response.id}`;
   }
-
 };

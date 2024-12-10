@@ -1,0 +1,50 @@
+<nav 
+class="flex gap-1 items-center my-8">
+  <a href="#{{backHref}}"
+  class="mr-auto font-medium hover:underline">
+    &lt; Back
+  </a>
+
+  <a href="#edit/{{id}}"
+  class="bg-green-500 font-medium rounded-lg hover:bg-green-600 px-3 py-1">
+    Edit
+  </a>
+
+  <button 
+  class="bg-rose-500 font-medium py-1 px-3 rounded-lg hover:bg-rose-600">
+    Delete
+  </button>
+</nav>
+
+<article 
+class="flex flex-col gap-4 my-8">
+  <h1 class="font-extrabold text-4xl">
+    {{title}}
+  </h1>
+
+  <p 
+  class="text-neutral-600">
+    Published {{published}} by {{author}}
+  </p>
+
+  <p>
+    {{content}}
+  </p>
+</article>
+
+<form 
+class="flex flex-col gap-1 my-8 w-fit border rounded-lg border-solid border-neutral-700">
+  <input id="username" placeholder="Your name" class="outline-none bg-inherit border-b border-neutral-700 border-solid">
+  <textarea placeholder="Add a comment..." class="bg-inherit outline-none resize-none"></textarea>
+</form>
+
+<button 
+class="font-medium bg-green-500 hover:bg-green-600 rounded-lg w-fit py-1 px-3">
+  Publish
+</button>
+
+<div id="comments-root" class=""></div>
+<button 
+class="font-medium bg-yellow-600 hover:bg-green-600 rounded-lg w-fit py-1 px-3" id="load-comments">
+  Load Comments
+</button>

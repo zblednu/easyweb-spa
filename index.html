@@ -10,26 +10,8 @@
     <script src="https://unpkg.com/mustache@latest" type="module"></script>
     <script src="./js/main.js" type="module"></script>
   </head>
-  <body class="py-8 px-4 mx-auto font-sans max-w-screen-lg bg-neutral-200 text-neutral-900">
+  <body class="py-8 mx-auto font-sans max-w-[70ch] bg-neutral-200 text-neutral-900">
     <header class="flex justify-between gap-4">
-
-      <!-- google oauth --> 
-      <script>
-          function handleAuth(response) {
-            const credential = response.credential; // ID Token
-
-            // Decode the ID Token (JWT)
-            const decodedToken = JSON.parse(atob(credential.split('.')[1])); // Decode the JWT to get user info
-            
-            // Extract user info
-            const userName = decodedToken.name;
-            
-            console.log("User Name:", userName); // Logs the user's name
-            window.username = userName;
-            document.querySelector("header").innerHTML += `<p>Logged in as ${userName}</p>`;
-          }
-      </script>
-      <script src="https://accounts.google.com/gsi/client" async defer></script>
       <div id="g_id_onload"
            data-client_id="1069021373752-l3sh95pbbi4cbagod7thbk924hu85oth.apps.googleusercontent.com"
            data-callback="handleAuth">
@@ -40,12 +22,12 @@
       <h1 class="self-center font-extrabold text-2xl">Easyweb</h1>
       <nav class="flex items-center gap-4 text-xl">
         <a href="#edit/new" class="bg-green-500 font-semibold hover:bg-green-600 px-3 py-1.5 rounded-lg">New</a>
-        <a href="#search/1" class="hover:underline">Articles</a>
+        <a href="#search/0" class="hover:underline">Articles</a>
         <a href="#about" class="hover:underline">About</a>
       </nav>
     </header>
 
-    <main class="text-xl pt-8 px-12">
+    <main class="text-xl pt-8">
     </main>
   </body>
 </html>

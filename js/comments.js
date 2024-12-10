@@ -1,6 +1,6 @@
-import { getSplittedHash } from "./utils.js";
+import { getSplittedHash, loadTemplate } from "./utils.js";
 
-const template = await (await fetch("./js/templates/comments.mustache")).text();
+const template = await loadTemplate("comments");
 
 export async function loadComments() {
   const articleId = getSplittedHash()[1];

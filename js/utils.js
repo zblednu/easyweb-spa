@@ -5,6 +5,7 @@ export function getSplittedHash(url = window.location.href) {
 
 export async function loadTemplate(path) {
   const url = `${window.templatesFolder}/${path}.mustache`;
+  console.log(url);
   const template = await fetch(url).then(
     response => response.text()
   );

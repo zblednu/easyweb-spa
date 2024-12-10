@@ -11,11 +11,11 @@ export default [
       window.lastSearchPage = Number(getSplittedHash()[1]);
 
       const props = {};
-      const articlesPerPage = 10;
+      const articlesPerPage = 5;
       const offset = articlesPerPage * lastSearchPage;
       let totalCount;
 
-      await fetch(`${serverURL}/articles?max=${articlesPerPage}&offset=${offset}`)
+      await fetch(`${serverURL}/articles?max=${articlesPerPage}&offset=${offset}&tag=easyweb`)
         .then(res => res.json())
         .then(data => {
           totalCount = data.meta.totalCount;
@@ -46,6 +46,7 @@ export default [
       const props = await fetch(`${serverURL}/article/${articleId}`)
         .then(res => res.json());
 
+      props.username = window.username;
       props.backHref = `search/${lastSearchPage}`;
       const published = new Date(props.dateCreated);
       props.published = published.toDateString().split(" ").slice(1).join(" ");
@@ -59,7 +60,7 @@ export default [
       const props = {};
       props.backHref = window.oldHash.join("/");
       const articleId = getSplittedHash()[1];
-      props.articleExists = !(articleId === "new");
+      props.articleExists = articleId !== "new";
 
       if (props.articleExists) {
         await fetch(`${serverURL}/article/${articleId}`)

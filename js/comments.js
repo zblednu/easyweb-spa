@@ -1,25 +1,25 @@
-import { getSplittedHash, loadTemplate } from "./utils.js";
+import { getSplittedHash, loadTemplate, renderToDOM } from "./utils.js";
 
-const template = await loadTemplate("comments");
-
-export async function loadComments() {
+window.loadComments = async function() {
+  const template = await loadTemplate("comments");
   const articleId = getSplittedHash()[1];
 
   const url = `${serverURL}/article/${articleId}/comment?offset=${window.commentsLoaded}&max=5`;
-  const data = {
+  const props = {
     comments: (await fetch(url).then(res => res.json())).comments
   };
 
-  const render = Mustache.render(template, data);
-  document.querySelector("#comments-root").innerHTML += render;
-  window.commentsLoaded += data.comments.length;
+  renderToDOM(template, props, "#comments-root", true);
+  window.commentsLoaded += props.comments.length;
 }
 
-export async function addNewComment() {
-  const author = document.querySelector("input").value;
-  const text = document.querySelector("textarea").value;
+window.postComment = async function() {
+  const author = document.querySelector("#username").value;
+  const text = document.querySelector("#comment-content").value;
   
   if (author && text) {
+    const articleId = getSplittedHash()[1];
+    const url = `${serverURL}/article/${articleId}/comment`;
     const payload = {
       method: "POST",
       headers: {
@@ -31,8 +31,6 @@ export async function addNewComment() {
       })
     }
 
-    const articleId = getSplittedHash()[1];
-    const url = `${serverURL}/article/${articleId}/comment`;
     await fetch(url, payload);
     loadComments();
   }

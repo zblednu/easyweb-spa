@@ -4,9 +4,9 @@ class="hover:underline font-semibold">
 </a>
 
 <div class="flex flex-col gap-4 mt-8">
-  <input id="author" placeholder="Author" type="text" required value="{{author}}" {{#articleExists}}disabled{{/articleExists}} class="disabled:bg-neutral-400 px-3 py-1 outline-none focus:bg-stone-300 bg-neutral-300">
-  <input id="title" placeholder="Title" type="text" required value="{{title}}" {{#articleExists}}disabled{{/articleExists}} class="disabled:bg-neutral-400 px-3 py-1 outline-none focus:bg-stone-300 bg-neutral-300">
-  <textarea id="content" required rows=10 class="px-3 py-1 outline-none focus:bg-stone-300 bg-neutral-300">{{content}}</textarea>
+  <input id="author" placeholder="Author" type="text" required value="{{author}}" {{#articleExists}}disabled{{/articleExists}} class="rounded-md disabled:bg-neutral-400 px-3 py-1 outline-none focus:bg-stone-300 bg-neutral-300">
+  <input id="title" placeholder="Title" type="text" required value="{{title}}" {{#articleExists}}disabled{{/articleExists}} class="rounded-md disabled:bg-neutral-400 px-3 py-1 outline-none focus:bg-stone-300 bg-neutral-300">
+  <textarea id="content" required rows=10 class="rounded-md px-3 py-1 outline-none focus:bg-stone-300 bg-neutral-300">{{content}}</textarea>
 
   <button onclick="uploadArticle()" class="bg-emerald-400 hover:bg-emerald-500 rounded-md px-3 py-1">
     Submit

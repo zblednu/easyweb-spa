@@ -12,20 +12,44 @@
   </head>
   <body class="py-8 mx-auto font-sans max-w-[70ch] bg-neutral-200 text-neutral-900">
     <header class="flex justify-between gap-4">
+      <h1 class="self-center font-extrabold text-2xl">Easyweb</h1>
       <div id="g_id_onload"
            data-client_id="1069021373752-l3sh95pbbi4cbagod7thbk924hu85oth.apps.googleusercontent.com"
-           data-callback="handleAuth">
+           data-context="signin"
+           data-ux_mode="popup"
+           data-callback="handleAuth"
+           data-auto_prompt="false">
       </div>
-      <div class="g_id_signin" data-type="standard"></div>
-      <!-- --> 
 
-      <h1 class="self-center font-extrabold text-2xl">Easyweb</h1>
-      <nav class="flex items-center gap-4 text-xl">
-        <a href="#edit/new" class="bg-green-500 font-semibold hover:bg-green-600 px-3 py-1.5 rounded-lg">New</a>
-        <a href="#search/0" class="hover:underline">Articles</a>
-        <a href="#about" class="hover:underline">About</a>
-      </nav>
+      <div class="g_id_signin"
+           data-type="standard"
+           data-shape="rectangular"
+           data-theme="outline"
+           data-text="signin"
+           data-size="large"
+           data-locale="en-US"
+           data-logo_alignment="left">
+      </div>
+      <script>
+        function handleAuth(response) {
+          const token = response.credential;
+          const base64Url = token.split('.')[1]; // Extract payload
+          const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+          const jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
+            return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+          }).join(''));
+
+          const payload = JSON.parse(jsonPayload);
+          window.username = payload.name;
+        }
+      </script>
     </header>
+
+    <nav class="flex items-center gap-4 text-xl">
+      <a href="#edit/new" class="bg-green-500 font-semibold hover:bg-green-600 px-3 py-1.5 rounded-lg">New</a>
+      <a href="#search/0" class="hover:underline">Articles</a>
+      <a href="#about" class="hover:underline">About</a>
+    </nav>
 
     <main class="text-xl pt-8">
     </main>

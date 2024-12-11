@@ -11,7 +11,6 @@ export default async function route() {
   }
 
   const props = await route.buildProps(event);
-  console.log(props);
   const root = "main";
   renderToDOM(route.template, props, root);
 }

@@ -4,16 +4,12 @@ class="font-medium hover:underline">
 </a>
 
 <div class="flex flex-col gap-4 text-slate-900">
-  <input id="author" placeholder="Author" type="text" required {{#articleExists}} disabled value="{{author}}" {{/articleExists}}
+  <input id="author" placeholder="Author" type="text" required value={{author}} {{#articleExists}}disabled{{/articleExists}}
   class="text-slate-900">
   
-  <input id="title" placeholder="Title" type="text" required {{#articleExists}} disabled value="{{title}}" {{/articleExists}}>
+  <input id="title" placeholder="Title" type="text" required value={{title}} {{#articleExists}}disabled{{/articleExists}}>
 
-  <textarea id="content" required rows=10>
-    {{#articleExists}}
-      {{content}}
-    {{/articleExists}}
-  </textarea>
+  <textarea id="content" required rows=10>{{content}}</textarea>
 
   <button onclick="uploadArticle()"
   class="bg-green-500"">

@@ -61,6 +61,7 @@ export default [
       props.backHref = window.oldHash.join("/");
       const articleId = getSplittedHash()[1];
       props.articleExists = articleId !== "new";
+      props.author = window.username;
 
       if (props.articleExists) {
         await fetch(`${serverURL}/article/${articleId}`)

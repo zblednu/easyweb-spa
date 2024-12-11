@@ -2,7 +2,7 @@ import { getSplittedHash } from "./utils.js";
 import route from "./router.js";
 import "./edit.js";
 import "./comments.js";
-import "https://accounts.google.com/gsi/client";
+import "./auth.js";
 
 window.serverURL = "https://wt.kpi.fei.tuke.sk/api";
 window.templatesFolder = "./mustache-templates";
@@ -17,3 +17,5 @@ window.addEventListener("hashchange", async event => {
 }, { capture: true });
 
 window.location.hash = "#about"
+
+window.handleLogOut();

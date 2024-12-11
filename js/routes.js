@@ -25,7 +25,7 @@ export default [
       if (lastSearchPage > 0) {
         props.prevSearchPage = String(lastSearchPage - 1);
       }
-      if (lastSearchPage < Math.floor(totalCount / articlesPerPage)) {
+      if (lastSearchPage < Math.ceil(totalCount / articlesPerPage) - 1) {
         props.nextSearchPage = String(lastSearchPage + 1);
       }
 

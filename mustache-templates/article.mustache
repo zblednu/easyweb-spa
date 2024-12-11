@@ -1,55 +1,42 @@
-<nav 
-class="flex gap-1 items-center my-8">
-  <a href="#{{backHref}}"
-  class="mr-auto font-medium hover:underline">
-    &lt; Back
-  </a>
+<div class="flex flex-col gap-4">
+  <nav class="flex gap-1 items-center">
+    <a href="#{{backHref}}" class="mr-auto font-semibold hover:underline">
+      &lt;&lt; Back
+    </a>
 
-  <a href="#edit/{{id}}"
-  class="bg-green-500 font-medium rounded-lg hover:bg-green-600 px-3 py-1">
-    Edit
-  </a>
+    <a href="#edit/{{id}}" class="bg-orange-500 hover:bg-orange-600 font-medium rounded-md px-3 py-1">
+      🖉 Edit
+    </a>
 
-  <button onclick="deleteArticle()"
-  class="bg-rose-500 font-medium py-1 px-3 rounded-lg hover:bg-rose-600">
-    Delete
+    <button onclick="deleteArticle()" class="bg-red-500 hover:bg-red-600 font-medium py-1 px-3 rounded-md">
+      Delete
+    </button>
+  </nav>
+
+  <article class="flex flex-col gap-4">
+    <h1 class="font-bold text-3xl">
+      {{title}}
+    </h1>
+
+    <p class="text-neutral-600">
+      Published {{published}} by {{author}}
+    </p>
+
+    <p>
+      {{content}}
+    </p>
+  </article>
+
+  <div class="flex flex-col gap-2 max-w-sm">
+    <input id="username" placeholder="Your name" value="{{username}}" class="px-3 py-1 outline-none focus:bg-stone-300 bg-neutral-300">
+    <textarea id="comment-content" placeholder="Add a comment..." class="px-3 py-1 bg-neutral-300 focus:bg-stone-300 outline-none resize-none"></textarea>
+    <button onclick="postComment()" class="font-medium bg-emerald-400 hover:bg-emerald-500 rounded-md w-fit py-1 px-3">
+      Post
+    </button>
+  </div>
+
+  <div id="comments-root" class="flex flex-col gap-2"></div>
+  <button onclick="loadComments()" class="font-medium bg-emerald-400 hover:bg-emerald-500 rounded-md w-fit py-1 px-3">
+    Load Comments
   </button>
-</nav>
-
-<article 
-class="flex flex-col gap-4 my-8">
-  <h1 class="font-extrabold text-4xl">
-    {{title}}
-  </h1>
-
-  <p 
-  class="text-neutral-600">
-    Published {{published}} by {{author}}
-  </p>
-
-  <p>
-    {{content}}
-  </p>
-</article>
-
-<div 
-class="flex flex-col gap-1 my-8 w-fit border rounded-lg border-solid border-neutral-700">
-  <input id="username" placeholder="Your name" {{#username}}value={{username}}{{/username}}
-  class="outline-none bg-inherit border-b border-neutral-700 border-solid">
-
-  <textarea id="comment-content" placeholder="Add a comment..." 
-  class="bg-inherit outline-none resize-none">
-  </textarea>
 </div>
-
-<button onclick="postComment()"
-class="font-medium bg-green-500 hover:bg-green-600 rounded-lg w-fit py-1 px-3">
-  Post
-</button>
-
-<div id="comments-root" class=""></div>
-
-<button onclick="loadComments()"
-class="font-medium bg-yellow-600 hover:bg-green-600 rounded-lg w-fit py-1 px-3">
-  Load Comments
-</button>

@@ -16,7 +16,7 @@ window.loadComments = async function() {
 window.postComment = async function() {
   const author = document.querySelector("#username").value;
   const text = document.querySelector("#comment-content").value;
-  
+
   if (author && text) {
     const articleId = getSplittedHash()[1];
     const url = `${serverURL}/article/${articleId}/comment`;
@@ -33,5 +33,7 @@ window.postComment = async function() {
 
     await fetch(url, payload);
     loadComments();
+    document.querySelector("#username").value = "";
+    document.querySelector("#comment-content").value = "";
   }
 }

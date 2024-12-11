@@ -10,20 +10,22 @@
     <script src="https://unpkg.com/mustache@latest" type="module"></script>
     <script src="./js/main.js" type="module"></script>
   </head>
-  <body class="py-8 mx-auto font-sans max-w-[70ch] bg-neutral-200 text-neutral-900">
-    <header class="flex justify-between gap-4">
-      <h1 class="self-center font-extrabold text-2xl">Easyweb</h1>
-      <div id="auth-root">
+  <body class="py-8 flex flex-col gap-6 text-xl mx-auto max-w-[66ch] px-4 font-sans bg-neutral-200 text-neutral-950">
+    <header class="flex justify-between items-center">
+      <h1 class="font-extrabold text-4xl">Easyweb</h1>
+      <div id="auth-root"
+      class="flex flex-col items-end gap-2">
       </div>
     </header>
 
-    <nav class="flex items-center gap-4 text-xl">
-      <a href="#edit/new" class="bg-green-500 font-semibold hover:bg-green-600 px-3 py-1.5 rounded-lg">New</a>
+    <nav class="flex items-center gap-4 font-medium">
+      <a href="#edit/new" 
+      class="bg-emerald-400 hover:bg-emerald-500 font-semibold px-3 py-1.5 rounded-md">New</a>
       <a href="#search/0" class="hover:underline">Articles</a>
       <a href="#about" class="hover:underline">About</a>
     </nav>
 
-    <main class="text-xl pt-8">
+    <main>
     </main>
   </body>
 </html>

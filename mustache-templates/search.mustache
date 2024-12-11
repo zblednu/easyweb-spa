@@ -1,31 +1,31 @@
 <nav class="flex flex-col gap-2"> 
   {{#articles}}
     <a href="#article/{{id}}" 
-    class="rounded-lg flex flex-col p-4 hover:shadow-lg hover:bg-neutral-100">
+    class="rounded-md flex flex-col p-4 hover:shadow-lg hover:bg-neutral-100">
       <h2 
-      class="truncate text-xl border-l-4 border-green-600 pl-2 font-bold text-green-600">
+      class="truncate border-l-4 border-emerald-600 pl-2 font-semibold text-emerald-600">
         {{title}}
       </h2>
       <p 
-      class="pl-5 line-clamp-3 text-neutral-700">
+      class="pl-5 line-clamp-3">
         {{preview}}
       </p>
     </a>
   {{/articles}}
 </nav>
 
-<nav class="flex px-16 mt-4">
+<nav class="flex mt-4 font-medium">
   {{#prevSearchPage}}
     <a href="#search/{{prevSearchPage}}"
-    class="bg-green-500 hover:bg-green-600 px-3 py-1 rounded-lg">
-      &lt; Prev
+    class="bg-emerald-400 hover:bg-emerald-500 px-3 py-1 rounded-md">
+      &lt;&lt; Prev
     </a>
   {{/prevSearchPage}}
 
   {{#nextSearchPage}}
     <a href="#search/{{nextSearchPage}}"
-    class="ml-auto bg-green-500 hover:bg-green-600 px-3 py-1 rounded-lg">
-      Next &gt; 
+    class="ml-auto bg-emerald-400 hover:bg-emerald-500 px-3 py-1 rounded-md">
+      Next &gt;&gt;
     </a>
   {{/nextSearchPage}}
 </nav>

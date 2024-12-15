@@ -5,7 +5,7 @@ const usernameField = document.querySelector("#username-field");
 export function handleAuth(response) {
   window.authToken = response.credential;
   const payload = JSON.parse(atob(authToken.split(".")[1]));
-  window.username = payload.given_name + payload.family_name;
+  window.username = payload.given_name + " " + payload.family_name;
   usernameField.textContent = username;
 
   signInButton.hidden = true;

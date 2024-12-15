@@ -1,36 +1,21 @@
-import { loadTemplate, renderToDOM } from "./utils.js";
-let loggedInTemplate;
-let loggedOutTemplate;
-let googleScriptElem;
-const root = "#auth-root";
+const signInButton = document.querySelector(".g_id_signin");
+const logOutPrompt = document.querySelector("#logout-prompt");
+const usernameField = document.querySelector("#username-field");
 
-window.handleLogIn = async function(response) {
-  const token = response.credential;
-  const base64Url = token.split('.')[1]; // Extract payload
-  const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
-  const jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
-    return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
-  }).join(''));
+export function handleAuth(response) {
+  window.authToken = response.credential;
+  const payload = JSON.parse(atob(authToken.split(".")[1]));
+  window.username = payload.given_name + payload.family_name;
+  usernameField.textContent = username;
 
-  const payload = JSON.parse(jsonPayload);
-  window.username = payload.name;
+  signInButton.hidden = true;
+  logOutPrompt.hidden = false;
 
-  if (!loggedInTemplate) {
-    loggedInTemplate = await loadTemplate("logged-in");
-  }
-  renderToDOM(loggedInTemplate, { username: window.username }, root);
-  googleScriptElem.remove();
 }
 
-window.handleLogOut = async function() {
-  googleScriptElem = document.createElement("script");
-  googleScriptElem.src = "https://accounts.google.com/gsi/client"
-  document.body.appendChild(googleScriptElem);
-
+export function handleLogOut() {
+  signInButton.hidden = false;
+  logOutPrompt.hidden = true;
   window.username = "";
-  if (!loggedOutTemplate) {
-    loggedOutTemplate = await loadTemplate("logged-out");
-  }
-  renderToDOM(loggedOutTemplate, {}, root);
 }
 

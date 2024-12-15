@@ -6,15 +6,37 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>EasyWeb SPA</title>
     <link rel="stylesheet" href="./style.css">
-
+    <link rel="icon" href="https://www.svgrepo.com/show/403771/letter-e.svg">
     <script src="https://unpkg.com/mustache@latest" type="module"></script>
     <script src="./js/main.js" type="module"></script>
   </head>
-  <body class="py-8 flex flex-col gap-6 text-xl mx-auto max-w-[66ch] px-4 font-sans bg-neutral-200 text-neutral-950">
+  <body onscroll="loadComments()" class="overflow-scroll py-8 flex flex-col gap-6 text-xl mx-auto max-w-[66ch] px-4 font-sans bg-neutral-200 text-neutral-950">
     <header class="flex justify-between items-center">
       <h1 class="font-extrabold text-4xl">Easyweb</h1>
-      <div id="auth-root"
-      class="flex flex-col items-end gap-2">
+      <div id="auth-root" class="flex flex-col items-end gap-2">
+        <div id="g_id_onload"
+           data-client_id="1069021373752-l3sh95pbbi4cbagod7thbk924hu85oth.apps.googleusercontent.com"
+           data-callback="handleAuth"
+           data-context="signin"
+           data-ux_mode="popup"
+           data-auto_prompt="false">
+        </div>
+        <div class="g_id_signin"
+           data-type="standard"
+           data-shape="rectangular"
+           data-theme="outline"
+           data-text="signin"
+           data-size="large"
+           data-locale="en"
+           data-logo_alignment="left">
+        </div>
+        <div id="logout-prompt" hidden>
+          <p>Logged in as: <span id="username-field"></span></p>
+          <button onclick="handleLogOut()"
+          class="bg-orange-500 hover:bg-orange-600 rounded-md px-3 py-1">
+            Log Out
+          </button>
+        </div>
       </div>
     </header>
 
